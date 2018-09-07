@@ -1,0 +1,5 @@
+c:\users\yavuz\source\repos\WebAppStd\Model\bin\Debug\Model.dll
+c:\users\yavuz\source\repos\WebAppStd\Model\bin\Debug\Model.pdb
+c:\users\yavuz\source\repos\WebAppStd\Model\obj\Debug\Model.csproj.CoreCompileInputs.cache
+c:\users\yavuz\source\repos\WebAppStd\Model\obj\Debug\Model.dll
+c:\users\yavuz\source\repos\WebAppStd\Model\obj\Debug\Model.pdb
