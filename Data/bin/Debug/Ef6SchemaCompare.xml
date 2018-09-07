@@ -1,0 +1,163 @@
+<?xml version="1.0"?>
+<doc>
+    <assembly>
+        <name>Ef6SchemaCompare</name>
+    </assembly>
+    <members>
+        <member name="M:Ef6SchemaCompare.CompareEfSql.#ctor(System.String)">
+            <summary>
+            Creates the CompareEfSql comparer.
+            </summary>
+            <param name="sqlTableNamesToIgnore">You can supply a comma delimited list of table 
+            names in the SQL database that you do not want reported as not used. 
+            The default is EF's __MigrationHistory table and DbUp's SchemaVersions table</param>
+        </member>
+        <member name="M:Ef6SchemaCompare.CompareEfSql.CompareEfWithDb(System.Data.Entity.DbContext)">
+            <summary>
+            This will compare the EF schema definition with the database schema it is linked to
+            </summary>
+            <param name="db"></param>
+            <returns></returns>
+        </member>
+        <member name="M:Ef6SchemaCompare.CompareEfSql.CompareEfWithDb``1(System.Data.Entity.DbContext)">
+            <summary>
+            This will compare the EF context definition with the database schema it is linked to
+            Use this version when data classes are in a different assembly to DbContext
+            </summary>
+            <typeparam name="T">Should be a EF data class</typeparam>
+            <param name="db"></param>
+            <returns></returns>
+        </member>
+        <member name="M:Ef6SchemaCompare.CompareEfSql.CompareEfWithDb(System.Data.Entity.DbContext,System.String)">
+            <summary>
+            This will compare the EF context definition with another SQL database schema
+            </summary>
+            <param name="db"></param>
+            <param name="configOrConnectionString">Either a full connection string or the name of a connection string in Config file</param>
+            <returns></returns>
+        </member>
+        <member name="M:Ef6SchemaCompare.CompareEfSql.CompareEfWithDb``1(System.Data.Entity.DbContext,System.String)">
+            <summary>
+            This will compare the EF context definition with another SQL database schema
+            Use this version when data classes are in a different assembly to DbContext
+            </summary>
+            <typeparam name="T">Should be a EF data class</typeparam>
+            <param name="db"></param>
+            <param name="configOrConnectionString">Either a full connection string or the name of a connection string in Config file</param>
+            <returns></returns>
+        </member>
+        <member name="M:Ef6SchemaCompare.CompareEfSql.CompareEfPartStart(System.Data.Entity.DbContext)">
+            <summary>
+            This sets things up for multiple DbContexts covering the same database
+            </summary>
+            <param name="db">Uses the connection string from the DbContext to find the SQL database</param>
+            <returns></returns>
+        </member>
+        <member name="M:Ef6SchemaCompare.CompareEfSql.CompareEfPartStart(System.String)">
+            <summary>
+            This sets things up for multiple DbContexts covering the same database
+            </summary>
+            <param name="configOrConnectionString">Either a full connection string or the name of a connection string in Config file</param>
+            <returns></returns>
+        </member>
+        <member name="M:Ef6SchemaCompare.CompareEfSql.CompareEfPartWithDb(System.Data.Entity.DbContext)">
+            <summary>
+            This will compare the EF context which only covers part of the database schema it is linked to
+            </summary>
+            <param name="db"></param>
+            <returns></returns>
+        </member>
+        <member name="M:Ef6SchemaCompare.CompareEfSql.CompareEfPartWithDb``1(System.Data.Entity.DbContext)">
+            <summary>
+            This will compare the EF context which only covers part of the database schema it is linked to
+            Use this version when data classes are in a different assembly to DbContext
+            </summary>
+            <typeparam name="T">Should be a EF data class</typeparam>
+            <param name="db"></param>
+            <returns></returns>
+        </member>
+        <member name="M:Ef6SchemaCompare.CompareSqlSql.#ctor(System.Boolean,System.String)">
+            <summary>
+            Creates the CompareEfSql comparer.
+            </summary>
+            <param name="showMismatchedIndexsAsErrors">If true then any mismatched, non primary-key indexes will be added to errors, 
+            otherwise they show up as warnings</param>
+            <param name="sqlTableNamesToIgnore">You can supply a comma delimited list of table 
+            names in the SQL database that you do not want reported as not used. 
+            The default is EF's __MigrationHistory table and DbUp's SchemaVersions table</param>
+        </member>
+        <member name="M:Ef6SchemaCompare.CompareSqlSql.CompareSqlToSql(System.String,System.String)">
+            <summary>
+            This compares two SQL databases looking at each table, its columns, its keys and its foreign keys.
+            It assumes the first database connection is the reference and the second is the one that should match the reference
+            </summary>
+            <param name="refDbNameOrConnectionString">Either a full connection string or the name of a connection string in Config file</param>
+            <param name="toBeCheckDbNameOrConnectionString">Either a full connection string or the name of a to connection string in Config file</param>
+            <returns></returns>
+        </member>
+        <member name="M:Ef6SchemaCompare.CompareSqlSql.CompareEfGeneratedSqlToSql``1(``0,System.String)">
+            <summary>
+            This creates a new database based on the DbContext you give it, but with a new name consisting of the orginial name with
+            ".EfGenerated" on the end. It then proceeds to check your SQL database against the EF Generated database
+            NOTE: This sets a null database initializer on the database. 
+            </summary>
+            <typeparam name="T"></typeparam>
+            <param name="dbContext"></param>
+            <param name="refDbNameOrConnectionString"></param>
+            <returns></returns>
+        </member>
+        <member name="M:Ef6SchemaCompare.DatabaseCreators.DeleteAndCreateEfDatabase``1(System.String,System.Boolean)">
+            <summary>
+            This ipes out any existing database pointed to by the nameOrConnectionString and creates a new one using your EF DbContext,
+            i.e. it creates the database and sets up all the tables, foreign keys and indexes
+            NOTE: This sets a null database initializer on the database. 
+            </summary>
+            <typeparam name="T">The type of your own DbContext</typeparam>
+            <param name="nameOrConnectionString">the name of a connection string in your .Config file, or a valid connection string</param>
+            <param name="yesIReallyWantToWipeMyMainDatabase">Set this to true if you want to wipe the database that your normal DbContext points to</param>
+        </member>
+        <member name="M:Ef6SchemaCompare.DatabaseCreators.DeleteAndNewSqlDatabase(System.String)">
+            <summary>
+            Wipes out the existing database and creates a new, empty one using Sql commands only
+            Use this to create a database prior to running some sort of migration scripts to build it to the format you want.
+            </summary>
+            <param name="nameOrConnectionString">the name of a connection string in your .Config file, or a valid connection string</param>
+        </member>
+        <member name="M:Ef6SchemaCompare.InternalEf6.Ef6CompareParts.CompareEfPart(System.Data.Entity.DbContext,System.Reflection.Assembly)">
+            <summary>
+            This compares the dbContext against the given sql database
+            </summary>
+            <param name="db"></param>
+            <param name="classesAssembly"></param>
+            <returns></returns>
+        </member>
+        <member name="M:Ef6SchemaCompare.InternalEf6.Ef6CompareParts.CompareFinish">
+            <summary>
+            Run this at the end to spot unused tables.
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="M:Ef6SchemaCompare.InternalEf6.Ef6MetadataDecoder.GetAllEfTablesWithColInfo(System.Data.Entity.DbContext)">
+            <summary>
+            This returns information on all the Ef classes that are mapped to the database
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="M:Ef6SchemaCompare.InternalEf6.Ef6MetadataDecoder.GetPublicAndPrivatePropertyByName(System.Type,System.String)">
+            <summary>
+            Have extracted the GetPropertes method so that the public/private is handled properly in all instances
+            </summary>
+            <param name="classToScan"></param>
+            <param name="propertyName">property name we are looking for</param>
+            <returns></returns>
+        </member>
+        <member name="M:Ef6SchemaCompare.InternalEf6.Ef6MetadataDecoder.ConvertMetadataToFromToMultpicity(System.Data.Entity.Core.Metadata.Edm.RelationshipEndMember,System.Data.Entity.Core.Metadata.Edm.RelationshipEndMember)">
+            <summary>
+            We convert the EF6 metadata RelationshipMultiplicity to an local copy to insulate against changes in the metadata format
+            </summary>
+            <param name="fromRelationship"></param>
+            <param name="toRelationship"></param>
+            <returns></returns>
+        </member>
+    </members>
+</doc>

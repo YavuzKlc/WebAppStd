@@ -1,0 +1,14 @@
+C:\Users\yavuz\source\repos\WebAppStd\EF\obj\Debug\EF.csprojAssemblyReference.cache
+C:\Users\yavuz\source\repos\WebAppStd\EF\obj\Debug\EF.csproj.CoreCompileInputs.cache
+C:\Users\yavuz\source\repos\WebAppStd\EF\bin\Debug\EF.dll.config
+C:\Users\yavuz\source\repos\WebAppStd\EF\bin\Debug\EF.dll
+C:\Users\yavuz\source\repos\WebAppStd\EF\bin\Debug\EF.pdb
+C:\Users\yavuz\source\repos\WebAppStd\EF\bin\Debug\EntityFramework.dll
+C:\Users\yavuz\source\repos\WebAppStd\EF\bin\Debug\EntityFramework.SqlServer.dll
+C:\Users\yavuz\source\repos\WebAppStd\EF\bin\Debug\Model.dll
+C:\Users\yavuz\source\repos\WebAppStd\EF\bin\Debug\Model.pdb
+C:\Users\yavuz\source\repos\WebAppStd\EF\bin\Debug\EntityFramework.xml
+C:\Users\yavuz\source\repos\WebAppStd\EF\bin\Debug\EntityFramework.SqlServer.xml
+C:\Users\yavuz\source\repos\WebAppStd\EF\obj\Debug\EF.csproj.CopyComplete
+C:\Users\yavuz\source\repos\WebAppStd\EF\obj\Debug\EF.dll
+C:\Users\yavuz\source\repos\WebAppStd\EF\obj\Debug\EF.pdb
