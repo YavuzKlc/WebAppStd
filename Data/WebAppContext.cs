@@ -15,7 +15,6 @@ namespace Data
             : base("DefaultConnection")
         {
             Configuration.LazyLoadingEnabled = true;
-            this.CompareAllClasses();
         }
 
         public DbSet<Role> Roles { get; set; }
@@ -24,7 +23,7 @@ namespace Data
 
         protected override void OnModelCreating(DbModelBuilder modelBuilder)
         {
-            Database.SetInitializer(new MigrateDatabaseToLatestVersion<WebAppContext, Configuration>("DefaultConnection"));
+            //Database.SetInitializer(new MigrateDatabaseToLatestVersion<WebAppContext, Configuration>("DefaultConnection"));
 
             modelBuilder.Conventions.Remove<OneToManyCascadeDeleteConvention>();
 
@@ -32,22 +31,6 @@ namespace Data
             //modelBuilder.Configurations.Add(new RoleMap());
 
             base.OnModelCreating(modelBuilder);
-        }
-
-        private void CompareAllClasses()
-        {
-            var comparer = new CompareEfSql();
-
-            var status = comparer.CompareEfWithDb<User>(this);
-
-            //status.IsValid is true if no errors.
-            //status.Errors contains any errors.
-            //status.Warnings contains any warnings
-            if (!status.IsValid)
-            {
-                status.Errors.ForEach(x => LoggerAdapter.Instance.Error(new ValidationException(x.ErrorMessage)));
-                status.Warnings.ForEach(x => LoggerAdapter.Instance.Info(x));
-            }
         }
     }
 }
